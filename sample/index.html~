@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+     <head>
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+         <meta http-equiv="Content-Language" content="ja" />
+         <title>地図</title>
+     </head>
+     <body>
+         <div id="map_canvas"></div>
+<p></p>
+         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+         <script type="text/javascript" src="http://www.google.com/jsapi"></script>  
+         <script type="text/javascript">google.load("jquery", "1.7");</script> 
+         <script type="text/javascript" src="./map.js"></script>
+         <script type="text/javascript">
+
+         $('#map_canvas').googleMaps(
+             ad: '東京都新宿区'
+             ido: ''
+             keido: ''
+             collback: function (ido, keido){
+                 //緯度と経度が返ってきます。
+             }
+         );
+
+         </script>
+     </body>
+</html>
