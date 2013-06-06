@@ -19,18 +19,19 @@ $("").googleMaps(option, apiOption)
 第二引数は省略しても構いません。
 
 ### html
-```
+```html
 <div id="map_canvas"></div>
 ```
 
 ### js
-```
+```js
     $("#map_canvas").googleMaps({
         ad: "東京都新宿区",
         ido: "",
         keido: "",
         collback: function (ido, keido){}
     });
+```
 
 ## オプション
 
