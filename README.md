@@ -40,3 +40,48 @@ $("#map_canvas").googleMaps({
 - keido : 経度
 - markerDrag : マーカーを移動するしない。 true マーカー移動 false マーカー固定 デフォルトはtrue
 - collback : 今マーカーが指している緯度と経度が返ってくる。
+
+## 例
+
+### 住所から取得
+```js
+$("#map_canvas").googleMaps({
+   ad: "東京都新宿区",
+   ido: "",
+   keido: "",
+   collback: function (ido, keido){
+       $("#ido").text(ido);
+       $("#keido").text(keido);
+   }
+});
+```
+
+### 座標から取得
+```js
+$("#map_canvas").googleMaps({
+   ad: "",
+   ido: "35.663921443429984",
+   keido: "139.69807769360966",
+   collback: function (ido, keido){
+       $("#ido").text(ido);
+       $("#keido").text(keido);
+   }
+});
+```
+
+### GoogleMapのオプションを指定（ズームレベル）
+```js
+$("#map_canvas3").googleMaps({
+       ad: "東京都新宿区"
+   },{
+       zoom: 20
+});
+```
+
+### マーカー移動禁止
+```js
+$("#map_canvas4").googleMaps({
+   ad: "東京都新宿区",
+   markerDrag: false,
+});
+```
