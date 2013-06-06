@@ -37,6 +37,6 @@ $("#map_canvas").googleMaps({
 
 - ad : 住所
 - ido : 緯度
-- keido : 軽度
+- keido : 経度
 - markerDrag : マーカーを移動するしない。 true マーカー移動 false マーカー固定 デフォルトはtrue
 - collback : 今マーカーが指している緯度と経度が返ってくる。
