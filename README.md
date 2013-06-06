@@ -1,4 +1,4 @@
-# google mapで住所から取得
+# 住所からgoogle mapを表示する
 
 ## 概要
 google map apiを利用して座標を取得出来ます。
