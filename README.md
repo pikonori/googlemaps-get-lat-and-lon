@@ -35,11 +35,11 @@ $("#map_canvas").googleMaps({
 
 ## オプション
 
-- ad : 住所
-- ido : 緯度
-- keido : 経度
-- markerDrag : マーカーを移動するしない。 true マーカー移動 false マーカー固定 デフォルトはtrue
-- collback : 今マーカーが指している緯度と経度が返ってくる。
+- ad : string : 住所
+- ido : float : 緯度
+- keido : float : 経度
+- markerDrag : boolean : マーカーを移動するしない。 true マーカー移動 false マーカー固定 デフォルトはtrue
+- collback : function : 今マーカーが指している緯度と経度が返ってくる。
 
 ## 例
 
