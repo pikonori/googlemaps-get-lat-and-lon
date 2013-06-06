@@ -6,6 +6,7 @@
       ad: '',
       ido: '',
       keido: '',
+      markerDrag: true,
       collback: function() {
         return false;
       }
@@ -21,8 +22,9 @@
   };
 
   $.googleMaps.prototype = {
-    _extends: function(option) {
-      return this.OPTION = $.extend(this.OPTION, option);
+    _extends: function(option, apiOption) {
+      this.OPTION = $.extend(this.OPTION, option);
+      return this.APIOPTION = $.extend(this.APIOPTION, apiOption);
     },
     _mapCreate: function(domObj) {
       var self;
@@ -42,7 +44,7 @@
       markerOption = {
         'position': latlng,
         'map': mapObj,
-        'draggable': true
+        'draggable': this.OPTION.markerDrag
       };
       marker = new google.maps.Marker(markerOption);
       self = this;
@@ -75,11 +77,13 @@
     }
   };
 
-  $.fn.googleMaps = function(option) {
+  $.fn.googleMaps = function(option, apiOption) {
     var instance;
-    instance = new $.googleMaps();
-    instance._extends(option);
-    return instance._mapCreate(this);
+    if ($(this).size() > 0) {
+      instance = new $.googleMaps();
+      instance._extends(option, apiOption);
+      return instance._mapCreate(this);
+    }
   };
 
 }).call(this);
