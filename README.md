@@ -25,12 +25,12 @@ Jqueryの拡張として作っていますので、$("").googleMaps()のよう�
 
 ### js
 ```js
-    $("#map_canvas").googleMaps({
-        ad: "東京都新宿区",
-        ido: "",
-        keido: "",
-        collback: function (ido, keido){}
-    });
+$("#map_canvas").googleMaps({
+    ad: "東京都新宿区",
+    ido: "",
+    keido: "",
+    collback: function (ido, keido){}
+});
 ```
 
 ## オプション
