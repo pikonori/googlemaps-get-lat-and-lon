@@ -71,7 +71,7 @@ $("#map_canvas").googleMaps({
 
 ### GoogleMapのオプションを指定（ズームレベル）
 ```js
-$("#map_canvas3").googleMaps({
+$("#map_canvas").googleMaps({
        ad: "東京都新宿区"
    },{
        zoom: 20
@@ -80,7 +80,7 @@ $("#map_canvas3").googleMaps({
 
 ### マーカー移動禁止
 ```js
-$("#map_canvas4").googleMaps({
+$("#map_canvas").googleMaps({
    ad: "東京都新宿区",
    markerDrag: false,
 });
