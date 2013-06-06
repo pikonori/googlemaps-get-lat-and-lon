@@ -1,4 +1,4 @@
-#google mapで住所から取得
+# google mapで住所から取得
 
 ##概要
 google map apiを利用して座標を取得出来ます。
@@ -19,9 +19,12 @@ $("").googleMaps(option, apiOption)
 第二引数は省略しても構いません。
 
 ###html
+```html
     <div id="map_canvas"></div>
+```
 
 ###js
+```javascript
     $("#map_canvas").googleMaps({
         ad: "東京都新宿区",
         ido: "",
