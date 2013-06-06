@@ -13,9 +13,9 @@ google map apiを利用して座標を取得出来ます。
 - 住所または座標から地図を表示
 
 ## 機能
-Jqueryの拡張として作っていますので、$("").googleMaps()のような書き方で利用できます。
-第一引数がこのライブラリのオプションで、第二引数が地図を作成する際に渡す、google map apiのオプションになります。
-$("").googleMaps(option, apiOption)
+Jqueryの拡張として作っていますので、$("").googleMaps()のような書き方で利用できます。  
+第一引数がこのライブラリのオプションで、第二引数が地図を作成する際に渡す、google map apiのオプションになります。  
+```$("").googleMaps(option, apiOption)```  
 第二引数は省略しても構いません。
 
 ### html
