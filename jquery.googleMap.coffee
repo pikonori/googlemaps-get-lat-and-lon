@@ -4,7 +4,7 @@ $.googleMaps = ()->
     ido: ''
     keido: ''
     markerDrag: true
-    markerRetun: ''
+    markerReturn: ''
     collback: ()-> false
   @APIOPTION =
     zoom: 15
@@ -32,7 +32,7 @@ $.googleMaps.prototype =
       #create googlemap
       self.GLOBAL.map = new google.maps.Map domObj.get(0), self.APIOPTION
       self._markerCreate self.APIOPTION.center
-      self._markerRetun()
+      self._markerReturn()
       @
     @
 
@@ -68,10 +68,10 @@ $.googleMaps.prototype =
       $def.resolve(ido, keido)
     $def.promise()
 
-  _markerRetun:()->
+  _markerReturn:()->
     self = @
-    if(@OPTION.markerRetun != "")
-      $(@OPTION.markerRetun).click(()->
+    if(@OPTION.markerReturn != "")
+      $(@OPTION.markerReturn).click(()->
         position = self.GLOBAL.marker.position
         self.GLOBAL.map.setCenter position
       )

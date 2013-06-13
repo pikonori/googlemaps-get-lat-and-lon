@@ -7,7 +7,7 @@
       ido: '',
       keido: '',
       markerDrag: true,
-      markerRetun: '',
+      markerReturn: '',
       collback: function() {
         return false;
       }
@@ -39,7 +39,7 @@
         self.OPTION.collback(ido, keido);
         self.GLOBAL.map = new google.maps.Map(domObj.get(0), self.APIOPTION);
         self._markerCreate(self.APIOPTION.center);
-        self._markerRetun();
+        self._markerReturn();
         return this;
       });
       return this;
@@ -80,11 +80,11 @@
       }
       return $def.promise();
     },
-    _markerRetun: function() {
+    _markerReturn: function() {
       var self;
       self = this;
-      if (this.OPTION.markerRetun !== "") {
-        return $(this.OPTION.markerRetun).click(function() {
+      if (this.OPTION.markerReturn !== "") {
+        return $(this.OPTION.markerReturn).click(function() {
           var position;
           position = self.GLOBAL.marker.position;
           return self.GLOBAL.map.setCenter(position);
