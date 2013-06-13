@@ -85,3 +85,15 @@ $("#map_canvas").googleMaps({
    markerDrag: false,
 });
 ```
+
+### テキストクリックでマーカに戻る
+markerReturnに要素を指定する。  
+HTMLにもボタンまたはリンクを準備する。  
+sampleで確認してください。  
+```js
+$("#map_canvas").googleMaps({
+   ad: "東京都新宿区",
+   markerDrag: false,
+   markerReturn: "#marker"
+});
+```
