@@ -4,6 +4,7 @@ $.googleMaps = ()->
     ido: ''
     keido: ''
     markerDrag: true
+    markerRetun: ''
     collback: ()-> false
   @APIOPTION =
     zoom: 15
@@ -11,6 +12,9 @@ $.googleMaps = ()->
     scaleControl: true
     mapTypeControl: false
     scrollwheel: false
+  @GLOBAL =
+    map: ""
+    marker: ""
   @
 
 $.googleMaps.prototype =
@@ -26,23 +30,25 @@ $.googleMaps.prototype =
       self.APIOPTION.center = new google.maps.LatLng(ido, keido)
       self.OPTION.collback ido, keido
       #create googlemap
-      map = new google.maps.Map domObj.get(0), self.APIOPTION
-      self._markerCreate self.APIOPTION.center, map
+      self.GLOBAL.map = new google.maps.Map domObj.get(0), self.APIOPTION
+      self._markerCreate self.APIOPTION.center
+      self._markerRetun()
       @
     @
-    # Create a marker & Add event marker
-  _markerCreate:(latlng, mapObj)->
+
+  # Create a marker & Add event marker
+  _markerCreate:(latlng)->
     markerOption =
       'position': latlng
-      'map': mapObj
+      'map': @GLOBAL.map
       'draggable': @OPTION.markerDrag
 
-    marker = new google.maps.Marker markerOption
+    @GLOBAL.marker = new google.maps.Marker markerOption
     self = @
 
-    google.maps.event.addListener marker, 'dragend', ()->
-      position = marker.position
-      mapObj.setCenter position
+    google.maps.event.addListener @GLOBAL.marker, 'dragend', ()->
+      position = self.GLOBAL.marker.position
+      self.GLOBAL.map.setCenter position
       self.OPTION.collback position.lat(), position.lng()
 
   # Object returned by the latitude and longitude.
@@ -61,6 +67,14 @@ $.googleMaps.prototype =
     else
       $def.resolve(ido, keido)
     $def.promise()
+
+  _markerRetun:()->
+    self = @
+    if(@OPTION.markerRetun != "")
+      $(@OPTION.markerRetun).click(()->
+        position = self.GLOBAL.marker.position
+        self.GLOBAL.map.setCenter position
+      )
 
 $.fn.googleMaps = (option, apiOption)->
   if($(@).size() > 0)

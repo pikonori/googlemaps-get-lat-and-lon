@@ -29,6 +29,10 @@
     <h2>マーカー移動禁止</h2>
     <div id="map_canvas4" class="map"></div>
 
+    <h2>テキストクリックでマーカに戻る</h2>
+    <div id="map_canvas5" class="map"></div>
+    <p id="marker">マーカに戻る</p>
+
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">google.load("jquery", "1.7");</script>
@@ -66,6 +70,13 @@
            ad: "東京都新宿区",
            markerDrag: false,
        });
+
+       $("#map_canvas5").googleMaps({
+           ad: "東京都新宿区",
+           markerDrag: false,
+           markerRetun: "#marker"
+       });
+
     </script>
   </body>
 </html>

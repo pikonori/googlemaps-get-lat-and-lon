@@ -7,6 +7,7 @@
       ido: '',
       keido: '',
       markerDrag: true,
+      markerRetun: '',
       collback: function() {
         return false;
       }
@@ -17,6 +18,10 @@
       scaleControl: true,
       mapTypeControl: false,
       scrollwheel: false
+    };
+    this.GLOBAL = {
+      map: "",
+      marker: ""
     };
     return this;
   };
@@ -30,28 +35,28 @@
       var self;
       self = this;
       $.when(this._mapLatLngObject(this.OPTION.ido, this.OPTION.keido)).always(function(ido, keido) {
-        var map;
         self.APIOPTION.center = new google.maps.LatLng(ido, keido);
         self.OPTION.collback(ido, keido);
-        map = new google.maps.Map(domObj.get(0), self.APIOPTION);
-        self._markerCreate(self.APIOPTION.center, map);
+        self.GLOBAL.map = new google.maps.Map(domObj.get(0), self.APIOPTION);
+        self._markerCreate(self.APIOPTION.center);
+        self._markerRetun();
         return this;
       });
       return this;
     },
-    _markerCreate: function(latlng, mapObj) {
-      var marker, markerOption, self;
+    _markerCreate: function(latlng) {
+      var markerOption, self;
       markerOption = {
         'position': latlng,
-        'map': mapObj,
+        'map': this.GLOBAL.map,
         'draggable': this.OPTION.markerDrag
       };
-      marker = new google.maps.Marker(markerOption);
+      this.GLOBAL.marker = new google.maps.Marker(markerOption);
       self = this;
-      return google.maps.event.addListener(marker, 'dragend', function() {
+      return google.maps.event.addListener(this.GLOBAL.marker, 'dragend', function() {
         var position;
-        position = marker.position;
-        mapObj.setCenter(position);
+        position = self.GLOBAL.marker.position;
+        self.GLOBAL.map.setCenter(position);
         return self.OPTION.collback(position.lat(), position.lng());
       });
     },
@@ -74,6 +79,17 @@
         $def.resolve(ido, keido);
       }
       return $def.promise();
+    },
+    _markerRetun: function() {
+      var self;
+      self = this;
+      if (this.OPTION.markerRetun !== "") {
+        return $(this.OPTION.markerRetun).click(function() {
+          var position;
+          position = self.GLOBAL.marker.position;
+          return self.GLOBAL.map.setCenter(position);
+        });
+      }
     }
   };
 
